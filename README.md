@@ -26,7 +26,7 @@ As seen on the next images, we set a listen "nc" on port 4444, and run a Bash/Ex
 
 ![image](https://user-images.githubusercontent.com/90664730/206090862-0c60a484-1ac4-4a50-a7cb-7e36e6eb0d9a.png)
 
-The reverse shell is created in order of get a stable connection against the router:
+The reverse shell is created in order of get a stable connection with the router:
 ![image](https://user-images.githubusercontent.com/90664730/206090678-ed4c8bed-5eb4-4b45-a9e3-3be4e07eb886.png)
 
 So it is possible to escalate privileges by spawning a full interoperable console with root privileges (see next image):
