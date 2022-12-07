@@ -4,28 +4,31 @@
 Privilege escalation vulnerability on ASKEY routers
 
 Device: ASKEY RTF3505VW-N1
-
-Firmware: BR_g3.5_100VNZ0b33 (not tested in other version)
+Firmware: BR_SV_g000_R3505VMN1001_s32_7 (not tested in other version)
+CLI Version: Reduced_CLI_HGU_v13
 
 Exploit:
 
-Mitrastar RTF3505VW-N1 devices are provided with access through ssh into a restricted default shell:
+ASKEY RTF3505VW-N1 devices are provided with access through ssh into a restricted default shell:
 
-image
+![image](https://user-images.githubusercontent.com/90664730/206090394-c52e705c-d442-41d3-9188-fd7661f552df.png)
 
 The restricted shell has CLI Version “Reduced_CLI”, and the environment is restricted to avoid execution of most linux/unix commands.
 
-image
+![image](https://user-images.githubusercontent.com/90664730/206090510-1b509d9b-81c6-4537-a7ea-9a5a482f2026.png)
 
 The command “tcpdump” present in the restricted shell do not handle correctly the -z flag, so it can be used to escalate privileges through the creation of a local file in the /tmp directory in the router, and injecting packets through port 80 (used for the router's Web GUI) with the string ";/bin/bash" in order to be executed. By using “;/bin/bash” as injected string we can spawn a busybox/ash console.
 
-As seen on the next image, we run a Bash/Expect script with this exploit:
+As seen on the next images, we set a listen "nc" on port 4444, and run a Bash/Expect script with the exploit:
 
-image
+![image](https://user-images.githubusercontent.com/90664730/206090862-0c60a484-1ac4-4a50-a7cb-7e36e6eb0d9a.png)
+
+The reverse shell is created in order of get a stable connection against the router:
+![image](https://user-images.githubusercontent.com/90664730/206090678-ed4c8bed-5eb4-4b45-a9e3-3be4e07eb886.png)
 
 So it is possible to escalate privileges by spawning a full interoperable console with root privileges (see next image):
 
-image
+![image](https://user-images.githubusercontent.com/90664730/206091157-2e02ba89-4b9f-4c58-85dd-0f77a2b54b8a.png)
 
 Through this escalation we can change the content of /etc/passwd (/var/passwd), create new users, or change any other system resource permanently.
 
