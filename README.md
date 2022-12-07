@@ -20,7 +20,7 @@ The restricted shell has access to a "Reduced_CLI”, and the environment is res
 
 ![image](https://user-images.githubusercontent.com/90664730/206090510-1b509d9b-81c6-4537-a7ea-9a5a482f2026.png)
 
-The command “tcpdump” is present in the restricted shell and do not handle correctly the -z flag, so it can be used to escalate privileges through the creation of a local file in the /tmp directory in the router, and injecting packets through port 80 (used for the router's Web GUI) with the string ";/bin/bash" in order to be executed by "-z sh". By using “;/bin/bash” as injected string we can spawn a busybox/ash console.
+The command “tcpdump” is present in the restricted shell and do not handle correctly the -z flag, so it can be used to escalate privileges through the creation of a local file in the /tmp directory of the router, and injecting packets through port 80 (used for the router's Web GUI) with the string ";/bin/bash" in order to be executed by "-z sh". By using “;/bin/bash” as injected string we can spawn a busybox/ash console.
 
 As seen on the next images, we set a listen "nc" on port 4444, and run a Bash/Expect script with the exploit:
 
