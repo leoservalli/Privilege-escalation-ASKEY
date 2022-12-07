@@ -9,6 +9,7 @@ Firmware: BR_SV_g000_R3505VMN1001_s32_7 (not tested in other version)
 
 CLI Version: Reduced_CLI_HGU_v13
 
+
 Exploit:
 
 ASKEY RTF3505VW-N1 devices are provided with access through ssh into a restricted default shell:
