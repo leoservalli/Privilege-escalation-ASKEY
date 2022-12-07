@@ -3,7 +3,7 @@
 
 Privilege escalation vulnerability on ASKEY routers
 
-Device: Mitrastar RTF3505VW-N1
+Device: ASKEY RTF3505VW-N1
 
 Firmware: BR_g3.5_100VNZ0b33 (not tested in other version)
 
