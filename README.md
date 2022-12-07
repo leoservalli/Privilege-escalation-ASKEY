@@ -16,11 +16,11 @@ ASKEY RTF3505VW-N1 devices are provided with access through ssh into a restricte
 
 ![image](https://user-images.githubusercontent.com/90664730/206090394-c52e705c-d442-41d3-9188-fd7661f552df.png)
 
-The restricted shell has CLI Version “Reduced_CLI”, and the environment is restricted to avoid execution of most linux/unix commands.
+The restricted shell has access to a "Reduced_CLI”, and the environment is restricted to avoid execution of most linux/unix commands.
 
 ![image](https://user-images.githubusercontent.com/90664730/206090510-1b509d9b-81c6-4537-a7ea-9a5a482f2026.png)
 
-The command “tcpdump” present in the restricted shell do not handle correctly the -z flag, so it can be used to escalate privileges through the creation of a local file in the /tmp directory in the router, and injecting packets through port 80 (used for the router's Web GUI) with the string ";/bin/bash" in order to be executed. By using “;/bin/bash” as injected string we can spawn a busybox/ash console.
+The command “tcpdump” is present in the restricted shell and do not handle correctly the -z flag, so it can be used to escalate privileges through the creation of a local file in the /tmp directory in the router, and injecting packets through port 80 (used for the router's Web GUI) with the string ";/bin/bash" in order to be executed by "-z sh". By using “;/bin/bash” as injected string we can spawn a busybox/ash console.
 
 As seen on the next images, we set a listen "nc" on port 4444, and run a Bash/Expect script with the exploit:
 
@@ -33,6 +33,6 @@ So it is possible to escalate privileges by spawning a full interoperable consol
 
 ![image](https://user-images.githubusercontent.com/90664730/206091157-2e02ba89-4b9f-4c58-85dd-0f77a2b54b8a.png)
 
-Through this escalation we can change the content of /etc/passwd (/var/passwd), create new users, or change any other system resource permanently.
+Through this escalation we can change the content of /etc/passwd (/var/passwd), create new users, access restricted data/files, or change any other system resource permanently.
 
 The user “support” is provided printed on the back of the router. In some cases, this routers use default credentials.
