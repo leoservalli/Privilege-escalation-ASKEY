@@ -1,5 +1,6 @@
 # Privilege-escalation-ASKEY-Router-RTF3505VW-N1
 
+CVE-2022-47040
 
 Privilege escalation vulnerability on ASKEY routers
 
